@@ -47,4 +47,12 @@ describe("AuthService", () => {
       done();
     }
   });
+
+  it("throws if signin is called with an unused email", async (done) => {
+    try {
+      await service.signin("asdf@asdf.com", "asdf");
+    } catch (err) {
+      done();
+    }
+  });
 });
