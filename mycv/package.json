@@ -63,6 +63,7 @@
     ],
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
+    "testRunner": "jest-jasmine2",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
