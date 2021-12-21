@@ -1,6 +1,8 @@
 import { Test, TestingModule } from "@nestjs/testing";
+import { Repository } from "typeorm";
 import { AuthService } from "./auth.service";
 import { User } from "./user.entity";
+import { UsersController } from "./users.controller";
 import { UsersService } from "./users.service";
 
 describe("AuthService", () => {
@@ -15,8 +17,10 @@ describe("AuthService", () => {
         Promise.resolve({ id: 1, email, password } as User),
     };
     const module = await Test.createTestingModule({
+      controllers: [UsersController],
       providers: [
         AuthService,
+        // UsersService,
         {
           provide: UsersService,
           useValue: fakeUsersService,
