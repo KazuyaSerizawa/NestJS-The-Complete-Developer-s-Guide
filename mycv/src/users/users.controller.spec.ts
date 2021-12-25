@@ -7,17 +7,34 @@ import { UsersService } from "./users.service";
 describe("UsersController", () => {
   let controller: UsersController;
   let fakeUsersService: Partial<UsersService>;
+  let fakeAuthService: Partial<AuthService>;
 
   beforeEach(async () => {
     fakeUsersService = {
-      find: () => Promise.resolve([]),
-      create: (email: string, password: string) =>
-        Promise.resolve({ id: 1, email, password } as User),
+      findOne: (id: number) => {
+        return Promise.resolve({
+          id,
+          email: "aaaaaa@aaaaa.com",
+          password: "asdf",
+        } as User);
+      },
+      find: (email: string) => {
+        return Promise.resolve([{ id: 1, email, password: "aa" } as User]);
+      },
+      // remove: () => {},
+      // update: () => {},
+    };
+    fakeAuthService = {
+      // signup: () => {},
+      // signin: () => {},
     };
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UsersController],
       providers: [
-        AuthService,
+        {
+          provide: AuthService,
+          useValue: fakeAuthService,
+        },
         {
           provide: UsersService,
           useValue: fakeUsersService,
