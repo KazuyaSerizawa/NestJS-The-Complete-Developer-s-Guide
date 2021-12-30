@@ -7,9 +7,9 @@ export class Report {
   @Column()
   price: number;
   @Column()
-  nake: string;
+  make: string;
   @Column()
-  year: string;
+  year: number;
   @Column()
   lng: number;
   @Column()

@@ -12,7 +12,7 @@ export class CreateReportDto {
   make: string;
   @IsString()
   model: string;
-  @IsString()
+  @IsNumber()
   @Min(1930)
   @Max(2050)
   year: number;
