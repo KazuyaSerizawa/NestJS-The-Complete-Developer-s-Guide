@@ -12,7 +12,7 @@ content-type: application/json
 }
 
 ### Approve an exisiting report
-PATCH  http://localhost:3000/reports/1
+PATCH  http://localhost:3000/reports/2
 content-type: application/json
 
 {
